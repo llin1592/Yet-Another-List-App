@@ -13,6 +13,7 @@ const SearchBar = (props) => {
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Icon.png"
           alt=""
+          style={{ paddingRight: 10 }}
         />
       </label>
       <input
