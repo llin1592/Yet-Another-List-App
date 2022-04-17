@@ -2,11 +2,26 @@ import React from "react";
 
 const SearchBar = (props) => {
   return (
-    <input
-      placeholder="Search..."
-      value={props.searchText}
-      onChange={props.onChange}
-    />
+    <div
+      style={{
+        justifyContent: "center",
+        display: "flex",
+        flex: 1,
+      }}
+    >
+      <label for="header-search-bar">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Icon.png"
+          alt=""
+        />
+      </label>
+      <input
+        placeholder="Search..."
+        value={props.searchText}
+        onChange={props.onChange}
+        style={{ width: "80%" }}
+      />
+    </div>
   );
 };
 
