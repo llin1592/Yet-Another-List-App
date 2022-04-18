@@ -4,6 +4,16 @@
 }
 
 .dashboard-container {
-    background-color: whitesmoke;
+    display: flex;
+    background-color: rgb(224, 224, 224);
     height:100%;
+}
+
+/*https://stackoverflow.com/questions/3148415/how-to-make-a-vertical-line-in-html*/
+.vertical-line {
+    position: relative;
+    width: 1px;
+    top: 4%;
+    height: 92%;
+    background-color: darkgray;
 }
