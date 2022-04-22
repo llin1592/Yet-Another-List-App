@@ -6,7 +6,7 @@
 /* Give container a shadow? */
 .group-container {
     display: flex;
-    width: 300px;
+    min-width: 300px;
     margin: 40px;
     flex-direction: column;
     border-radius: 10px;
