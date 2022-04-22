@@ -16,6 +16,7 @@ const Header = (props) => {
             fontSize: 30,
             fontWeight: "bold",
             fontFamily: "Arial, sans-serif",
+            maxLines: 2,
           }}
         >
           Yet Another List App

@@ -18,19 +18,29 @@
 }
 
 .left-header-bar * {
+    display:inline;
     padding-left: 10px;
+    min-width:max-content;
 }
 
-.center-header-bar {
+.center-header-bar * {
+    padding-left: 10px;
     justify-content: center;
 }
+
+/* .center-header-bar input {
+    border-radius: 3px;
+    border: 1px solid grey;
+    padding: 5px;
+    min-width: 300px;
+} */
 
 .right-header-bar {
     justify-content: right;
     padding-right: 10px;
 }
 
-img {
+.header-bar img {
     vertical-align: top;
     width: 30px;
     height: 30px;
