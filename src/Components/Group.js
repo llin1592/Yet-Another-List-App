@@ -7,9 +7,9 @@ const Group = (props) => {
 
   return (
     <div className="group-container">
-      <p>{props.title}</p>
-      {notes.map((note, i) => (
-        <Note key={i} />
+      <h1>{props.title}</h1>
+      {props.notes.map((note, i) => (
+        <Note title={note.title} content={note.content} key={i} />
       ))}
     </div>
   );

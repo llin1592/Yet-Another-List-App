@@ -8,7 +8,7 @@ function Dashboard() {
   useEffect(() => {
     setGroups([
       ...groups,
-      { title: "First Group", notes: [] },
+      { title: "First Group", notes: [{ title: "Click me", content: "word" }] },
       { title: "Second Group", notes: [] },
     ]);
   }, []);

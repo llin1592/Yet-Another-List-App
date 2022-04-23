@@ -7,12 +7,13 @@
     display: flex;
     background-color: rgb(224, 224, 224);
     height:100%;
+    overflow-x: auto;
 }
 
 /*https://stackoverflow.com/questions/3148415/how-to-make-a-vertical-line-in-html*/
 .vertical-line {
     position: relative;
-    width: 1px;
+    min-width: 1px;
     top: 4%;
     height: 92%;
     background-color: darkgray;
