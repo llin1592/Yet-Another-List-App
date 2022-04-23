@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Group from "./Group.js";
 import "../Styles/Dashboard.css";
 
-function Dashboard() {
+const Dashboard = (props) => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
@@ -27,8 +27,6 @@ function Dashboard() {
       ...tempGroups[groupIndex].notes,
       { title: newTitle, content: newContent },
     ];
-
-    console.log([...tempGroups]);
     setGroups([...tempGroups]);
   };
 
@@ -37,18 +35,39 @@ function Dashboard() {
       {/* Close but not this 
         https://stackoverflow.com/questions/31284169/parse-error-adjacent-jsx-elements-must-be-wrapped-in-an-enclosing-tag*/}
       {/* https://stackoverflow.com/questions/23840997/how-can-i-return-multiple-lines-jsx-in-another-return-statement-in-react */}
-      {groups.map((group, i) => [
-        <Group
-          title={group.title}
-          notes={group.notes}
-          key={i}
-          setNotes={(title, content, index) =>
-            updateNotesHelper(title, content, index, i)
-          }
-          addNotes={(title, content) => addNotesHelper(title, content, i)}
-        />,
-        <div className="vertical-line"></div>,
-      ])}
+      {props.searchText
+        ? groups
+            .filter(
+              (group) =>
+                group.title.toLowerCase().includes(props.searchText) ||
+                group.notes.filter((note) =>
+                  note.title.toLowerCase().includes(props.searchText)
+                ).length > 0
+            )
+            .map((group, i) => [
+              <Group
+                title={group.title}
+                notes={group.notes}
+                key={i}
+                setNotes={(title, content, index) =>
+                  updateNotesHelper(title, content, index, i)
+                }
+                addNotes={(title, content) => addNotesHelper(title, content, i)}
+              />,
+              <div className="vertical-line"></div>,
+            ])
+        : groups.map((group, i) => [
+            <Group
+              title={group.title}
+              notes={group.notes}
+              key={i}
+              setNotes={(title, content, index) =>
+                updateNotesHelper(title, content, index, i)
+              }
+              addNotes={(title, content) => addNotesHelper(title, content, i)}
+            />,
+            <div className="vertical-line"></div>,
+          ])}
       <Group
         title="Add a new group"
         notes={[]}
@@ -58,6 +77,6 @@ function Dashboard() {
       />
     </div>
   );
-}
+};
 
 export default Dashboard;
