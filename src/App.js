@@ -24,7 +24,7 @@ class App extends Component {
           searchText={this.state.searchText}
           onChange={(e) => this.onSearch(e.target.value)}
         />
-        <Dashboard searchText={this.state.searchText} />
+        <Dashboard searchText={this.state.searchText.toLowerCase()} />
       </div>
     );
   }
