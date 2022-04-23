@@ -6,7 +6,7 @@
 .header-bar {
     display: flex;
     justify-content: space-between;
-    height: 70px;
+    min-height: 70px;
     background-color: rgb(123, 200, 226);
 }
 
