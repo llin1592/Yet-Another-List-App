@@ -12,17 +12,19 @@ const Group = (props) => {
   return (
     <div className={groupType} onClick={props.onClick}>
       <h2>{props.title}</h2>
-      {props.notes.map((note, i) => (
-        <Note title={note.title} content={note.content} key={i} />
-      ))}
-      {!props.onClick ? (
-        <Note
-          title="Add new note"
-          onClick={() =>
-            props.addNotes("New note", "Add something!", props.key)
-          }
-        />
-      ) : null}
+      <div className="group-notes-container">
+        {props.notes.map((note, i) => (
+          <Note title={note.title} content={note.content} key={i} />
+        ))}
+        {!props.onClick ? (
+          <Note
+            title="Add new note"
+            onClick={() =>
+              props.addNotes("New note", "Add something!", props.key)
+            }
+          />
+        ) : null}
+      </div>
     </div>
   );
 };

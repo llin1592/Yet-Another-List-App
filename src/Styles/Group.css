@@ -15,7 +15,6 @@
 
 .group-container {
     background-color: whitesmoke;
-    overflow-y: auto;
 }
 
 .group-container-add {
@@ -25,4 +24,9 @@
     border-color: rgba(0, 0, 0, 0.3);
     border-style: dashed;
     background-color: rgba(245, 245, 245, 0.3);
+}
+
+.group-notes-container {
+    margin-top: 1em;
+    overflow-y: auto;
 }
