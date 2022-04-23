@@ -3,14 +3,22 @@ import Note from "./Note.js";
 import "../Styles/Group.css";
 
 const Group = (props) => {
-  const [notes, setNotes] = useState([]);
+  let groupType = "group-container";
+
+  if (props.onClick) {
+    groupType += "-add";
+  }
 
   return (
-    <div className="group-container">
-      <h1>{props.title}</h1>
+    <div className={groupType} onClick={props.onClick}>
+      <h2>{props.title}</h2>
       {props.notes.map((note, i) => (
         <Note title={note.title} content={note.content} key={i} />
       ))}
+      <Note
+        title="Add new note"
+        onClick={() => props.addNotes("New note", "Add something!", props.key)}
+      />
     </div>
   );
 };

@@ -11,14 +11,7 @@ const Header = (props) => {
           src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg"
           alt=""
         />
-        <h1
-          style={{
-            fontFamily: "Arial, sans-serif",
-            maxLines: 2,
-          }}
-        >
-          Yet Another List App
-        </h1>
+        <h1>Yet Another List App</h1>
       </div>
 
       <div className="center-header-bar">
