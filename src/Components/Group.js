@@ -15,10 +15,14 @@ const Group = (props) => {
       {props.notes.map((note, i) => (
         <Note title={note.title} content={note.content} key={i} />
       ))}
-      <Note
-        title="Add new note"
-        onClick={() => props.addNotes("New note", "Add something!", props.key)}
-      />
+      {!props.onClick ? (
+        <Note
+          title="Add new note"
+          onClick={() =>
+            props.addNotes("New note", "Add something!", props.key)
+          }
+        />
+      ) : null}
     </div>
   );
 };
