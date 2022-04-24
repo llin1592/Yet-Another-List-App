@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 import "../Styles/Menu.css";
 
 const Menu = (props) => {
@@ -17,22 +18,46 @@ const Menu = (props) => {
     props.setGroups([...tempGroups]);
   }
 
+  const [coverStyle, setCoverStyle] = useState(true);
+  const appear = useSpring({
+    opacity: coverStyle ? 1 : 0,
+    config: { duration: 150 },
+  });
+
+  const disappear = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: 0 },
+    config: { duration: 100 },
+  });
+
+  function closeMenu() {
+    setCoverStyle(false);
+    setTimeout(() => props.closeEditMenu(), 100);
+  }
+
+  const moveUp = useSpring({
+    from: { marginTop: "50px", opacity: 0 },
+    to: { marginTop: "0px", opacity: 1 },
+    config: { duration: 300 },
+  });
+
   return (
     // https://stackoverflow.com/questions/37568550/react-prevent-event-trigger-on-parent-from-child
     // https://www.golangprograms.com/onmousedown-and-onmouseup-event-handling-in-reactjs.html
-    <div
+    <animated.div
       className="cover"
       onMouseDown={(e) => {
         if (e.currentTarget == e.target) {
-          props.closeEditMenu();
+          closeMenu();
         }
       }}
+      style={appear}
     >
-      <div className="edit-menu">
+      <animated.div className="edit-menu" style={moveUp}>
         <div className="close-button">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
-            onClick={() => props.closeEditMenu()}
+            onClick={() => closeMenu()}
           />
         </div>
 
@@ -68,15 +93,15 @@ const Menu = (props) => {
           <h2
             onClick={() => {
               updateNotesHelper(note.title, note.content);
-              props.closeEditMenu();
+              closeMenu();
             }}
           >
             Save
           </h2>
-          <h2 onClick={() => props.closeEditMenu()}>Cancel</h2>
+          <h2 onClick={() => closeMenu()}>Cancel</h2>
         </div>
-      </div>
-    </div>
+      </animated.div>
+    </animated.div>
   );
 };
 
