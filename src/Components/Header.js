@@ -19,6 +19,7 @@ const Header = (props) => {
           className="header-search-bar"
           searchText={props.searchText}
           onChange={props.onChange}
+          resetSearch={props.resetSearch}
         />
       </div>
 
