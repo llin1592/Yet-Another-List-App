@@ -22,13 +22,7 @@ const Menu = (props) => {
   const appear = useSpring({
     from: { opacity: 0 },
     to: { opacity: coverStyle ? 1 : 0 },
-    config: { duration: 150 },
-  });
-
-  const disappear = useSpring({
-    from: { opacity: 1 },
-    to: { opacity: 0 },
-    config: { duration: 100 },
+    config: { duration: coverStyle ? 150 : 100 },
   });
 
   function closeMenu() {

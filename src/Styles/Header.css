@@ -45,3 +45,25 @@
     width: 30px;
     height: 30px;
 }
+
+.options-box {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 70px;
+    background-color: white;
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+    border-bottom-left-radius: 10px;
+    justify-content: center;
+}
+
+.settings-button {
+    transform: rotate(0deg);
+    transition: 300ms ease;
+}
+
+.settings-button-active {
+    transform: rotate(90deg);
+    transition: 300ms ease;
+}

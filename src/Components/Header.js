@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 import SearchBar from "./SearchBar.js";
 import "../Styles/Header.css";
 
 const Header = (props) => {
+  const [isOptionOpen, setOptionOpen] = useState(false);
+  const dropDown = useSpring({
+    x: isOptionOpen ? window.innerWidth - 270 : window.innerWidth,
+  });
+
+  const rotateImg = useSpring({
+    from: { deg: 0 },
+    to: { deg: isOptionOpen ? 90 : 0 },
+  });
+
   return (
     <div className="header-bar">
       <div className="left-header-bar">
@@ -26,11 +37,19 @@ const Header = (props) => {
       {/* https://commons.wikimedia.org/wiki/File:Cog_font_awesome.svg */}
       <div className="right-header-bar">
         <img
-          className="settings-button"
+          className={
+            isOptionOpen ? "settings-button" : "settings-button-active"
+          }
           src="https://upload.wikimedia.org/wikipedia/commons/9/92/Cog_font_awesome.svg"
           alt=""
+          onClick={() => {
+            setOptionOpen(!isOptionOpen);
+          }}
         />
       </div>
+      <animated.div className="options-box" style={dropDown}>
+        <p>Hello there!</p>
+      </animated.div>
     </div>
   );
 };
