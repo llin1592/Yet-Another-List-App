@@ -47,6 +47,15 @@ const Dashboard = (props) => {
     tempGroups[groupIndex].notes.splice(destination, 0, tempNote);
   }
 
+  function deleteGroupHelper(groupIndex) {
+    let tempGroups = [...props.groups];
+    console.log(tempGroups);
+    console.log(groupIndex);
+    tempGroups.splice(groupIndex, 1);
+
+    props.setGroups([...tempGroups]);
+  }
+
   return (
     <div className="dashboard-container">
       {/* Close but not this 
@@ -77,6 +86,7 @@ const Dashboard = (props) => {
                     noteIndex: noteIndex,
                   })
                 }
+                deleteGroup={() => deleteGroupHelper(i)}
               />,
               <div className="vertical-line"></div>,
             ])
@@ -97,6 +107,7 @@ const Dashboard = (props) => {
                   noteIndex: noteIndex,
                 })
               }
+              deleteGroup={() => deleteGroupHelper(i)}
             />,
             <div className="vertical-line"></div>,
           ])}

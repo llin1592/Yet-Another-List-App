@@ -6,7 +6,7 @@ import "../Styles/Group.css";
 
 const Group = (props) => {
   let groupType = "group-container";
-  let [editName, setEditName] = useState("");
+  let [editName, setEditName] = useState(null);
 
   if (props.onClick) {
     groupType += "-add";
@@ -15,13 +15,13 @@ const Group = (props) => {
   return (
     <div className={groupType} onClick={props.onClick}>
       {/* https://commons.wikimedia.org/wiki/File:Write-icon.svg 
-          https://commons.wikimedia.org/wiki/File:PICOL_Cancel.svg */}
-      {editName === "" || groupType === "group-container-add" ? (
+          https://commons.wikimedia.org/wiki/File:PICOL_Cancel.svg 
+          https://commons.wikimedia.org/wiki/File:Icon_delete_2019_1.svg */}
+      {editName === null || groupType === "group-container-add" ? (
         <h2
           onClick={() => setEditName(props.title)}
           style={{ wordWrap: "break-word" }}
         >
-          {" "}
           {props.title}
         </h2>
       ) : (
@@ -34,13 +34,21 @@ const Group = (props) => {
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/5/53/Write-icon.svg"
             onClick={() => {
-              props.setGroupTitle(editName);
-              setEditName("");
+              if (editName.length) {
+                props.setGroupTitle(editName);
+              }
+              setEditName(null);
+            }}
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_delete_2019_1.svg"
+            onClick={() => {
+              props.deleteGroup();
             }}
           />
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
-            onClick={() => setEditName("")}
+            onClick={() => setEditName(null)}
           />
         </div>
       )}
