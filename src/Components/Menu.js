@@ -20,7 +20,8 @@ const Menu = (props) => {
 
   const [coverStyle, setCoverStyle] = useState(true);
   const appear = useSpring({
-    opacity: coverStyle ? 1 : 0,
+    from: { opacity: 0 },
+    to: { opacity: coverStyle ? 1 : 0 },
     config: { duration: 150 },
   });
 
