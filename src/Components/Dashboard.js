@@ -22,7 +22,7 @@ const Dashboard = (props) => {
         ],
         id: uuidv4(),
       },
-      { title: "Second Group", notes: [], id: uuidv4() },
+      { title: "Click me too!", notes: [], id: uuidv4() },
     ]);
   }, []);
 

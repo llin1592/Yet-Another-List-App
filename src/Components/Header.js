@@ -44,6 +44,7 @@ const Header = (props) => {
       </div>
       <animated.div className="options-box" style={appearRight}>
         <p>Hello there!</p>
+        <p>Second row</p>
       </animated.div>
     </div>
   );
