@@ -14,6 +14,8 @@
     padding: 2em;
     flex-direction: column;
     border-radius: 10px;
+    border: 1px solid lightgrey;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .group-container {
