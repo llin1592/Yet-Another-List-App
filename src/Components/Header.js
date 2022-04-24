@@ -6,7 +6,7 @@ import "../Styles/Header.css";
 const Header = (props) => {
   const [isOptionOpen, setOptionOpen] = useState(false);
   const appearRight = useSpring({
-    right: isOptionOpen ? -300 : 0,
+    right: isOptionOpen ? 0 : -310,
   });
 
   return (

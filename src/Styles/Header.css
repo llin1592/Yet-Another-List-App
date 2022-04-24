@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     min-height: 70px;
-    background-color: rgb(123, 200, 226);
+    background-color: rgb(106, 218, 255);
 }
 
 .header-bar > div {
@@ -36,7 +36,7 @@
 } */
 
 .right-header-bar {
-    justify-content: right;
+    justify-content: flex-end;
     padding-right: 10px;
 }
 
@@ -57,7 +57,8 @@
     border-left: 1px solid grey;
     border-bottom-left-radius: 10px;
     justify-content: center;
-    z-index: 2;
+    /* https://stackoverflow.com/questions/22151271/placing-absolute-behind-relative-positioned-element */
+    z-index: 3;
 }
 
 .settings-button {

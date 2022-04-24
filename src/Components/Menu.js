@@ -7,13 +7,20 @@ const Menu = (props) => {
     props.groups[props.groupIndex].notes[props.noteIndex]
   );
 
-  function updateNotesHelper(newTitle, newContent) {
+  function updateNote(newTitle, newContent) {
     let tempGroups = [...props.groups];
     tempGroups[props.groupIndex].notes[props.noteIndex] = {
       title: newTitle,
       content: newContent,
       id: note.id,
     };
+
+    props.setGroups([...tempGroups]);
+  }
+
+  function deleteNote() {
+    let tempGroups = [...props.groups];
+    tempGroups[props.groupIndex].notes.splice(props.noteIndex, 1);
 
     props.setGroups([...tempGroups]);
   }
@@ -87,11 +94,19 @@ const Menu = (props) => {
         <div className="edit-menu-buttons">
           <h2
             onClick={() => {
-              updateNotesHelper(note.title, note.content);
+              updateNote(note.title, note.content);
               closeMenu();
             }}
           >
             Save
+          </h2>
+          <h2
+            onClick={() => {
+              deleteNote();
+              closeMenu();
+            }}
+          >
+            Delete
           </h2>
           <h2 onClick={() => closeMenu()}>Cancel</h2>
         </div>
