@@ -7,7 +7,7 @@ const Menu = (props) => {
     props.groups[props.groupIndex].notes[props.noteIndex]
   );
 
-  function updateNotesHelper(newTitle, newContent) {
+  function updateNote(newTitle, newContent) {
     let tempGroups = [...props.groups];
     tempGroups[props.groupIndex].notes[props.noteIndex] = {
       title: newTitle,
@@ -18,16 +18,18 @@ const Menu = (props) => {
     props.setGroups([...tempGroups]);
   }
 
+  function deleteNote() {
+    let tempGroups = [...props.groups];
+    tempGroups[props.groupIndex].notes.splice(props.noteIndex, 1);
+
+    props.setGroups([...tempGroups]);
+  }
+
   const [coverStyle, setCoverStyle] = useState(true);
   const appear = useSpring({
-    opacity: coverStyle ? 1 : 0,
-    config: { duration: 150 },
-  });
-
-  const disappear = useSpring({
-    from: { opacity: 1 },
-    to: { opacity: 0 },
-    config: { duration: 100 },
+    from: { opacity: 0 },
+    to: { opacity: coverStyle ? 1 : 0 },
+    config: { duration: coverStyle ? 150 : 100 },
   });
 
   function closeMenu() {
@@ -92,11 +94,19 @@ const Menu = (props) => {
         <div className="edit-menu-buttons">
           <h2
             onClick={() => {
-              updateNotesHelper(note.title, note.content);
+              updateNote(note.title, note.content);
               closeMenu();
             }}
           >
             Save
+          </h2>
+          <h2
+            onClick={() => {
+              deleteNote();
+              closeMenu();
+            }}
+          >
+            Delete
           </h2>
           <h2 onClick={() => closeMenu()}>Cancel</h2>
         </div>

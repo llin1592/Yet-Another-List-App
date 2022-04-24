@@ -22,7 +22,7 @@ const Dashboard = (props) => {
         ],
         id: uuidv4(),
       },
-      { title: "Second Group", notes: [], id: uuidv4() },
+      { title: "Click me too!", notes: [], id: uuidv4() },
     ]);
   }, []);
 
@@ -45,6 +45,15 @@ const Dashboard = (props) => {
     let tempGroups = [...groups];
     let [tempNote] = tempGroups[groupIndex].notes.splice(source, 1);
     tempGroups[groupIndex].notes.splice(destination, 0, tempNote);
+  }
+
+  function deleteGroupHelper(groupIndex) {
+    let tempGroups = [...props.groups];
+    console.log(tempGroups);
+    console.log(groupIndex);
+    tempGroups.splice(groupIndex, 1);
+
+    props.setGroups([...tempGroups]);
   }
 
   return (
@@ -77,6 +86,7 @@ const Dashboard = (props) => {
                     noteIndex: noteIndex,
                   })
                 }
+                deleteGroup={() => deleteGroupHelper(i)}
               />,
               <div className="vertical-line"></div>,
             ])
@@ -97,6 +107,7 @@ const Dashboard = (props) => {
                   noteIndex: noteIndex,
                 })
               }
+              deleteGroup={() => deleteGroupHelper(i)}
             />,
             <div className="vertical-line"></div>,
           ])}

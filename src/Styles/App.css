@@ -3,6 +3,12 @@
     padding: 0px;
 }
 
+/* Simple solution that is suitable to fix the issue of offscreen components 
+making app scrollable since scrolling is not necessary for this web page */
+body {
+    overflow: hidden;
+}
+
 .app-container {
     display: flex;
     flex-direction: column;

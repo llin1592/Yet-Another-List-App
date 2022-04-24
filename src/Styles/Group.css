@@ -43,14 +43,15 @@
 }
 
 .edit-group-title input {
-    margin-right: 5px;
     font-size: 18px;
 }
 
 .edit-group-title img {
+    margin-left: 5px;
     width: 25px;
     height: 25px;
     vertical-align:top;
+    cursor: pointer;
 }
 
 ul  {
