@@ -5,13 +5,8 @@ import "../Styles/Header.css";
 
 const Header = (props) => {
   const [isOptionOpen, setOptionOpen] = useState(false);
-  const dropDown = useSpring({
-    x: isOptionOpen ? window.innerWidth - 270 : window.innerWidth,
-  });
-
-  const rotateImg = useSpring({
-    from: { deg: 0 },
-    to: { deg: isOptionOpen ? 90 : 0 },
+  const appearRight = useSpring({
+    right: isOptionOpen ? -300 : 0,
   });
 
   return (
@@ -47,7 +42,7 @@ const Header = (props) => {
           }}
         />
       </div>
-      <animated.div className="options-box" style={dropDown}>
+      <animated.div className="options-box" style={appearRight}>
         <p>Hello there!</p>
       </animated.div>
     </div>
