@@ -45,7 +45,13 @@ const Group = (props) => {
 
       <div className="group-notes-container">
         {props.notes.map((note, i) => (
-          <Note title={note.title} content={note.content} key={i} />
+          <Note
+            title={note.title}
+            content={note.content}
+            onClick={() => props.openEditMenu(i)}
+            isAddButton={false}
+            key={i}
+          />
         ))}
         {props.addNotes ? (
           <Note
@@ -53,6 +59,7 @@ const Group = (props) => {
             onClick={() =>
               props.addNotes("New note", "Add something!", props.key)
             }
+            isAddButton={true}
           />
         ) : null}
       </div>

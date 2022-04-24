@@ -3,7 +3,8 @@ import Group from "./Group.js";
 import "../Styles/Dashboard.css";
 
 const Dashboard = (props) => {
-  const [groups, setGroups] = useState([]);
+  let groups = props.groups;
+  let setGroups = props.setGroups;
 
   useEffect(() => {
     setGroups([
@@ -15,14 +16,6 @@ const Dashboard = (props) => {
       { title: "Second Group", notes: [] },
     ]);
   }, []);
-
-  function updateNotesHelper(newTitle, newContent, noteIndex, groupIndex) {
-    let tempGroups = [...groups];
-    let tempNotes = [...tempGroups[groupIndex].notes];
-    tempNotes[noteIndex] = { title: newTitle, notes: newContent };
-
-    setGroups([...tempGroups]);
-  }
 
   function addNotesHelper(newTitle, newContent, groupIndex) {
     let tempGroups = [...groups];
@@ -58,10 +51,10 @@ const Dashboard = (props) => {
                 title={group.title}
                 notes={group.notes}
                 key={i}
-                setNotes={(title, content, index) =>
-                  updateNotesHelper(title, content, index, i)
-                }
                 setGroupTitle={(title) => setGroupTitleHelper(title, i)}
+                openEditMenu={(noteIndex) =>
+                  props.openEditMenu({ groupIndex: i, noteIndex: noteIndex })
+                }
               />,
               <div className="vertical-line"></div>,
             ])
@@ -70,11 +63,11 @@ const Dashboard = (props) => {
               title={group.title}
               notes={group.notes}
               key={i}
-              setNotes={(title, content, index) =>
-                updateNotesHelper(title, content, index, i)
-              }
               addNotes={(title, content) => addNotesHelper(title, content, i)}
               setGroupTitle={(title) => setGroupTitleHelper(title, i)}
+              openEditMenu={(noteIndex) =>
+                props.openEditMenu({ groupIndex: i, noteIndex: noteIndex })
+              }
             />,
             <div className="vertical-line"></div>,
           ])}
