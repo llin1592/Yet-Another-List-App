@@ -20,7 +20,7 @@ const SearchBar = (props) => {
         placeholder="Search..."
         value={props.searchText}
         onChange={props.onChange}
-        style={{ width: "80%" }}
+        style={{ width: "80%", fontSize: "18px" }}
       />
     </div>
   );

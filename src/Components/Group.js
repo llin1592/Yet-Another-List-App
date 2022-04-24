@@ -4,6 +4,7 @@ import "../Styles/Group.css";
 
 const Group = (props) => {
   let groupType = "group-container";
+  let [editName, setEditName] = useState("");
 
   if (props.onClick) {
     groupType += "-add";
@@ -11,7 +12,31 @@ const Group = (props) => {
 
   return (
     <div className={groupType} onClick={props.onClick}>
-      <h2>{props.title}</h2>
+      {/* https://commons.wikimedia.org/wiki/File:Write-icon.svg 
+          https://commons.wikimedia.org/wiki/File:PICOL_Cancel.svg */}
+      {editName === "" ? (
+        <h2 onClick={() => setEditName(props.title)}> {props.title}</h2>
+      ) : (
+        <div className="edit-group-title">
+          <input
+            value={editName}
+            onChange={(e) => setEditName(e.target.value)}
+            maxlength={50}
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Write-icon.svg"
+            onClick={() => {
+              props.setGroupTitle(editName);
+              setEditName("");
+            }}
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
+            onClick={() => setEditName("")}
+          />
+        </div>
+      )}
+
       <div className="group-notes-container">
         {props.notes.map((note, i) => (
           <Note title={note.title} content={note.content} key={i} />

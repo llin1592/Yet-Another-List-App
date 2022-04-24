@@ -10,7 +10,7 @@ const Note = (props) => {
 
   return (
     <div className={noteType} onClick={props.onClick}>
-      <p>{props.title}</p>
+      <h4>{props.title}</h4>
       <p>{props.content}</p>
     </div>
   );

@@ -7,6 +7,7 @@
 .group-container, .group-container-add {
     display: flex;
     min-width: 300px;
+    max-width: 300px;
     /* max-height must be 80% because 100% is of the parent, which has max-height of 100vh */
     max-height: 80%;
     margin: 40px;
@@ -31,4 +32,23 @@
 .group-notes-container {
     margin-top: 1em;
     overflow-y: auto;
+}
+
+.edit-group-title {
+    display: flex;
+}
+
+.edit-group-title * {
+    width: 100%;
+}
+
+.edit-group-title input {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.edit-group-title img {
+    width: 25px;
+    height: 25px;
+    vertical-align:top;
 }

@@ -8,7 +8,10 @@ const Dashboard = (props) => {
   useEffect(() => {
     setGroups([
       ...groups,
-      { title: "First Group", notes: [{ title: "Click me", content: "word" }] },
+      {
+        title: "First Group long long long long long name",
+        notes: [{ title: "Click me", content: "word" }],
+      },
       { title: "Second Group", notes: [] },
     ]);
   }, []);
@@ -21,14 +24,20 @@ const Dashboard = (props) => {
     setGroups([...tempGroups]);
   }
 
-  const addNotesHelper = (newTitle, newContent, groupIndex) => {
+  function addNotesHelper(newTitle, newContent, groupIndex) {
     let tempGroups = [...groups];
     tempGroups[groupIndex].notes = [
       ...tempGroups[groupIndex].notes,
       { title: newTitle, content: newContent },
     ];
     setGroups([...tempGroups]);
-  };
+  }
+
+  function setGroupTitleHelper(newTitle, groupIndex) {
+    let tempGroups = [...groups];
+    tempGroups[groupIndex].title = newTitle;
+    setGroups([...tempGroups]);
+  }
 
   return (
     <div className="dashboard-container">
@@ -53,6 +62,7 @@ const Dashboard = (props) => {
                   updateNotesHelper(title, content, index, i)
                 }
                 addNotes={(title, content) => addNotesHelper(title, content, i)}
+                setGroupTitle={(title) => setGroupTitleHelper(title, i)}
               />,
               <div className="vertical-line"></div>,
             ])
@@ -65,9 +75,11 @@ const Dashboard = (props) => {
                 updateNotesHelper(title, content, index, i)
               }
               addNotes={(title, content) => addNotesHelper(title, content, i)}
+              setGroupTitle={(title) => setGroupTitleHelper(title, i)}
             />,
             <div className="vertical-line"></div>,
           ])}
+
       <Group
         title="Add a new group"
         notes={[]}
