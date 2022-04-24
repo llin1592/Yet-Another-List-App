@@ -14,8 +14,14 @@ const Group = (props) => {
     <div className={groupType} onClick={props.onClick}>
       {/* https://commons.wikimedia.org/wiki/File:Write-icon.svg 
           https://commons.wikimedia.org/wiki/File:PICOL_Cancel.svg */}
-      {editName === "" ? (
-        <h2 onClick={() => setEditName(props.title)}> {props.title}</h2>
+      {editName === "" || groupType === "group-container-add" ? (
+        <h2
+          onClick={() => setEditName(props.title)}
+          style={{ wordWrap: "break-word" }}
+        >
+          {" "}
+          {props.title}
+        </h2>
       ) : (
         <div className="edit-group-title">
           <input
