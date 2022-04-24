@@ -13,7 +13,13 @@ const Dashboard = (props) => {
       ...groups,
       {
         title: "Hello World",
-        notes: [{ title: "Click me", content: "Word", id: uuidv4() }],
+        notes: [
+          {
+            title: "Click me!",
+            content: "Make more notes and try dragging me up and down, too!",
+            id: uuidv4(),
+          },
+        ],
         id: uuidv4(),
       },
       { title: "Second Group", notes: [], id: uuidv4() },
