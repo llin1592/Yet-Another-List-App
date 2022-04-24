@@ -7,9 +7,6 @@
     border: 1px solid grey;
     border-radius: 10px;
     padding: 1em;
-    margin-bottom: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
 }
 
 .note-container {
@@ -20,4 +17,7 @@
     border-color: rgba(0, 0, 0, 0.3);
     border-style: dashed;
     background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
