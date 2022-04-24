@@ -11,6 +11,7 @@ const Menu = (props) => {
     tempGroups[props.groupIndex].notes[props.noteIndex] = {
       title: newTitle,
       content: newContent,
+      id: note.id,
     };
 
     props.setGroups([...tempGroups]);
@@ -44,7 +45,11 @@ const Menu = (props) => {
           className="title-input-box"
           value={note.title}
           onChange={(e) =>
-            setNote({ title: e.target.value, content: note.content })
+            setNote({
+              title: e.target.value,
+              content: note.content,
+              id: note.id,
+            })
           }
         />
 
@@ -56,7 +61,7 @@ const Menu = (props) => {
           value={note.content}
           rows={10}
           onChange={(e) =>
-            setNote({ title: note.title, content: e.target.value })
+            setNote({ title: note.title, content: e.target.value, id: note.id })
           }
         />
         <div className="edit-menu-buttons">

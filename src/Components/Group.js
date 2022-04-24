@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Note from "./Note.js";
+import { v4 as uuidv4 } from "uuid";
 import "../Styles/Group.css";
 
 const Group = (props) => {
@@ -42,22 +44,49 @@ const Group = (props) => {
           />
         </div>
       )}
-
+      {/* https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/ */}
       <div className="group-notes-container">
-        {props.notes.map((note, i) => (
-          <Note
-            title={note.title}
-            content={note.content}
-            onClick={() => props.openEditMenu(i)}
-            isAddButton={false}
-            key={i}
-          />
-        ))}
+        <DragDropContext
+          onDragEnd={(result) => {
+            if (!result.destination) return;
+            props.moveNote(result.source.index, result.destination.index);
+          }}
+        >
+          <Droppable droppableId={"note-list" + props.groupIndex}>
+            {(provided) => (
+              <ul
+                className={"note-list" + props.groupIndex}
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {props.notes.map((note, i) => (
+                  <Draggable key={note.id} draggableId={note.id} index={i}>
+                    {(provided) => (
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <Note
+                          title={note.title}
+                          content={note.content}
+                          onClick={() => props.openEditMenu(i)}
+                          isAddButton={false}
+                        />
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
         {props.addNotes ? (
           <Note
             title="Add new note"
             onClick={() =>
-              props.addNotes("New note", "Add something!", props.key)
+              props.addNotes("New note", "Add something!", props.groupIndex)
             }
             isAddButton={true}
           />

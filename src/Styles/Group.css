@@ -52,3 +52,13 @@
     height: 25px;
     vertical-align:top;
 }
+
+ul  {
+    list-style-type: none;
+}
+
+ul > li {
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
