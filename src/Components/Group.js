@@ -41,7 +41,7 @@ const Group = (props) => {
         {props.notes.map((note, i) => (
           <Note title={note.title} content={note.content} key={i} />
         ))}
-        {!props.onClick ? (
+        {props.addNotes ? (
           <Note
             title="Add new note"
             onClick={() =>

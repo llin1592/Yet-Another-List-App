@@ -61,7 +61,6 @@ const Dashboard = (props) => {
                 setNotes={(title, content, index) =>
                   updateNotesHelper(title, content, index, i)
                 }
-                addNotes={(title, content) => addNotesHelper(title, content, i)}
                 setGroupTitle={(title) => setGroupTitleHelper(title, i)}
               />,
               <div className="vertical-line"></div>,
@@ -80,13 +79,15 @@ const Dashboard = (props) => {
             <div className="vertical-line"></div>,
           ])}
 
-      <Group
-        title="Add a new group"
-        notes={[]}
-        onClick={() =>
-          setGroups([...groups, { title: "New Group", notes: [] }])
-        }
-      />
+      {!props.searchText ? (
+        <Group
+          title="Add a new group"
+          notes={[]}
+          onClick={() =>
+            setGroups([...groups, { title: "New Group", notes: [] }])
+          }
+        />
+      ) : null}
     </div>
   );
 };
