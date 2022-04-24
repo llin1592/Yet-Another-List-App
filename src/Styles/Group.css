@@ -52,3 +52,12 @@
     height: 25px;
     vertical-align:top;
 }
+
+ul  {
+    list-style-type: none;
+}
+
+/* This is a very dumb work-around to weird behaviors when dragging components with margin/padding */
+ul > * {
+    border: 1px solid whitesmoke;
+}

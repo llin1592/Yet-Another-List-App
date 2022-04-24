@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { v4 as uuidv4 } from "uuid";
 import Group from "./Group.js";
 import "../Styles/Dashboard.css";
 
@@ -11,9 +13,10 @@ const Dashboard = (props) => {
       ...groups,
       {
         title: "Hello World",
-        notes: [{ title: "Click me", content: "Word" }],
+        notes: [{ title: "Click me", content: "Word", id: uuidv4() }],
+        id: uuidv4(),
       },
-      { title: "Second Group", notes: [] },
+      { title: "Second Group", notes: [], id: uuidv4() },
     ]);
   }, []);
 
@@ -21,7 +24,7 @@ const Dashboard = (props) => {
     let tempGroups = [...groups];
     tempGroups[groupIndex].notes = [
       ...tempGroups[groupIndex].notes,
-      { title: newTitle, content: newContent },
+      { title: newTitle, content: newContent, id: uuidv4() },
     ];
     setGroups([...tempGroups]);
   }
@@ -30,6 +33,12 @@ const Dashboard = (props) => {
     let tempGroups = [...groups];
     tempGroups[groupIndex].title = newTitle;
     setGroups([...tempGroups]);
+  }
+
+  function moveNoteHelper(source, destination, groupIndex) {
+    let tempGroups = [...groups];
+    let [tempNote] = tempGroups[groupIndex].notes.splice(source, 1);
+    tempGroups[groupIndex].notes.splice(destination, 0, tempNote);
   }
 
   return (
@@ -50,10 +59,17 @@ const Dashboard = (props) => {
               <Group
                 title={group.title}
                 notes={group.notes}
-                key={i}
+                key={group.id}
+                groupIndex={i}
                 setGroupTitle={(title) => setGroupTitleHelper(title, i)}
+                moveNote={(source, destination) =>
+                  moveNoteHelper(source, destination, i)
+                }
                 openEditMenu={(noteIndex) =>
-                  props.openEditMenu({ groupIndex: i, noteIndex: noteIndex })
+                  props.openEditMenu({
+                    groupIndex: i,
+                    noteIndex: noteIndex,
+                  })
                 }
               />,
               <div className="vertical-line"></div>,
@@ -62,11 +78,18 @@ const Dashboard = (props) => {
             <Group
               title={group.title}
               notes={group.notes}
-              key={i}
+              key={group.id}
+              groupIndex={i}
               addNotes={(title, content) => addNotesHelper(title, content, i)}
               setGroupTitle={(title) => setGroupTitleHelper(title, i)}
+              moveNote={(source, destination) =>
+                moveNoteHelper(source, destination, i)
+              }
               openEditMenu={(noteIndex) =>
-                props.openEditMenu({ groupIndex: i, noteIndex: noteIndex })
+                props.openEditMenu({
+                  groupIndex: i,
+                  noteIndex: noteIndex,
+                })
               }
             />,
             <div className="vertical-line"></div>,
@@ -77,7 +100,10 @@ const Dashboard = (props) => {
           title="Add a new group"
           notes={[]}
           onClick={() =>
-            setGroups([...groups, { title: "New Group", notes: [] }])
+            setGroups([
+              ...groups,
+              { title: "New Group", notes: [], id: uuidv4() },
+            ])
           }
         />
       ) : null}
