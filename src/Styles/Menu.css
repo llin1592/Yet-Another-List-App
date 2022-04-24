@@ -57,7 +57,7 @@
 .edit-menu-buttons {
     display: flex;
     flex-grow: 1;
-    align-items: end;
+    align-items: flex-end;
     justify-content: flex-end;
     margin-top: 1em;
 }

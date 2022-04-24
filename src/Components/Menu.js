@@ -49,7 +49,7 @@ const Menu = (props) => {
     <animated.div
       className="cover"
       onMouseDown={(e) => {
-        if (e.currentTarget == e.target) {
+        if (e.currentTarget === e.target) {
           closeMenu();
         }
       }}
@@ -59,6 +59,7 @@ const Menu = (props) => {
         <div className="close-button">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
+            alt=""
             onClick={() => closeMenu()}
           />
         </div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Note from "./Note.js";
-import { v4 as uuidv4 } from "uuid";
 import "../Styles/Group.css";
 
 const Group = (props) => {
@@ -33,6 +32,7 @@ const Group = (props) => {
           />
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/5/53/Write-icon.svg"
+            alt=""
             onClick={() => {
               if (editName.length) {
                 props.setGroupTitle(editName);
@@ -42,12 +42,14 @@ const Group = (props) => {
           />
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_delete_2019_1.svg"
+            alt=""
             onClick={() => {
               props.deleteGroup();
             }}
           />
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
+            alt=""
             onClick={() => setEditName(null)}
           />
         </div>

@@ -8,7 +8,7 @@
     background-color: rgb(224, 224, 224);
     height:100%;
     overflow-x: auto;
-    align-items: start;
+    align-items: flex-start;
 }
 
 /*https://stackoverflow.com/questions/3148415/how-to-make-a-vertical-line-in-html*/
