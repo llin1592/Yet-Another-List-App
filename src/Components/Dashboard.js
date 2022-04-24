@@ -10,8 +10,8 @@ const Dashboard = (props) => {
     setGroups([
       ...groups,
       {
-        title: "First Group long long long long long name",
-        notes: [{ title: "Click me", content: "word" }],
+        title: "Hello World",
+        notes: [{ title: "Click me", content: "Word" }],
       },
       { title: "Second Group", notes: [] },
     ]);

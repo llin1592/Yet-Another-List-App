@@ -17,6 +17,8 @@ const Menu = (props) => {
   }
 
   return (
+    // https://stackoverflow.com/questions/37568550/react-prevent-event-trigger-on-parent-from-child
+    // https://www.golangprograms.com/onmousedown-and-onmouseup-event-handling-in-reactjs.html
     <div
       className="cover"
       onMouseDown={(e) => {

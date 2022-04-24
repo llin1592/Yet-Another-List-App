@@ -22,6 +22,10 @@ const SearchBar = (props) => {
         onChange={props.onChange}
         style={{ width: "80%", fontSize: "18px" }}
       />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
+        onClick={() => props.resetSearch()}
+      />
     </div>
   );
 };

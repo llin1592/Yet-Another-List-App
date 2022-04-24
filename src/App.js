@@ -46,6 +46,7 @@ class App extends Component {
         <Header
           searchText={this.state.searchText}
           onChange={(e) => this.onSearch(e.target.value)}
+          resetSearch={() => this.onSearch("")}
         />
         <Dashboard
           groups={this.state.groups}
