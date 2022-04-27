@@ -5,8 +5,12 @@
 
 /* Simple solution that is suitable to fix the issue of offscreen components 
 making app scrollable since scrolling is not necessary for this web page */
+/* https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element */
 body {
+    height: 100%;
     overflow: hidden;
+    width: 100%;
+    position: fixed;
 }
 
 .app-container {
