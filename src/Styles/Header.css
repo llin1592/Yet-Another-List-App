@@ -72,3 +72,7 @@
     transform: rotate(90deg);
     transition: 300ms ease;
 }
+
+.header-bar img {
+    cursor: pointer;
+}

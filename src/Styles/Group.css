@@ -4,7 +4,7 @@
 }
 
 /* Give container a shadow? */
-.group-container, .group-container-add {
+.group-container, .group-add-container {
     display: flex;
     min-width: 300px;
     max-width: 300px;
@@ -22,13 +22,24 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.group-container-add {
+.group-add-container {
     justify-content: center;
     align-items: center;
 
     border-color: rgba(0, 0, 0, 0.3);
     border-style: dashed;
     background-color: rgba(245, 245, 245, 0.3);
+}
+
+.group-move-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+}
+
+.group-move-buttons * {
+    margin-left: 1em;
 }
 
 .group-notes-container {
@@ -50,6 +61,9 @@
 
 .edit-group-title img {
     margin-left: 5px;
+}
+
+.group-container img {
     width: 25px;
     height: 25px;
     vertical-align:top;

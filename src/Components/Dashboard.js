@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Group from "./Group.js";
+import AddGroup from "./AddGroup.js";
 import "../Styles/Dashboard.css";
 
 const Dashboard = (props) => {
@@ -112,9 +113,8 @@ const Dashboard = (props) => {
           ])}
 
       {!props.searchText ? (
-        <Group
+        <AddGroup
           title="Add a new group"
-          notes={[]}
           onClick={() =>
             setGroups([
               ...groups,

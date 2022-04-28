@@ -12,11 +12,18 @@ const Group = (props) => {
   }
 
   return (
-    <div className={groupType} onClick={props.onClick}>
+    <div className="group-container">
       {/* https://commons.wikimedia.org/wiki/File:Write-icon.svg 
           https://commons.wikimedia.org/wiki/File:PICOL_Cancel.svg 
           https://commons.wikimedia.org/wiki/File:Icon_delete_2019_1.svg */}
-      {editName === null || groupType === "group-container-add" ? (
+      <div className="group-move-buttons">
+        {/* https://commons.wikimedia.org/wiki/File:ArrowLeft.svg
+            https://commons.wikimedia.org/wiki/File:ArrowRight.svg */}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg" />
+      </div>
+
+      {editName === null ? (
         <h2
           onClick={() => setEditName(props.title)}
           style={{ wordWrap: "break-word" }}
@@ -54,6 +61,7 @@ const Group = (props) => {
           />
         </div>
       )}
+
       {/* https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/ */}
       <div className="group-notes-container">
         <DragDropContext
