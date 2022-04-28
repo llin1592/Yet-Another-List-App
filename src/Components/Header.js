@@ -16,6 +16,7 @@ const Header = (props) => {
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg"
           alt=""
+          draggable={false}
         />
         <h1>Yet Another List App</h1>
       </div>
@@ -37,6 +38,7 @@ const Header = (props) => {
           }
           src="https://upload.wikimedia.org/wikipedia/commons/9/92/Cog_font_awesome.svg"
           alt=""
+          draggable={false}
           onClick={() => {
             setOptionOpen(!isOptionOpen);
           }}

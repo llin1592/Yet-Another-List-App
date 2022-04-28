@@ -17,6 +17,7 @@ const SearchBar = (props) => {
           src="https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Icon.png"
           onClick={() => searchInput.current.focus()}
           alt=""
+          draggable={false}
           style={{ paddingRight: 10 }}
         />
       </label>
@@ -30,6 +31,7 @@ const SearchBar = (props) => {
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
         alt=""
+        draggable={false}
         onClick={() => props.resetSearch()}
       />
     </div>

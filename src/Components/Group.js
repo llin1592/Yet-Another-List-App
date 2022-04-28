@@ -18,6 +18,7 @@ const Group = (props) => {
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg"
             alt=""
+            draggable={false}
             onClick={() =>
               props.swapGroups(props.groupIndex - 1, props.groupIndex)
             }
@@ -27,6 +28,7 @@ const Group = (props) => {
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg"
             alt=""
+            draggable={false}
             style={{ opacity: 0.1 }}
           />
         )}
@@ -35,6 +37,7 @@ const Group = (props) => {
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg"
             alt=""
+            draggable={false}
             onClick={() =>
               props.swapGroups(props.groupIndex, props.groupIndex + 1)
             }
@@ -44,6 +47,7 @@ const Group = (props) => {
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg"
             alt=""
+            draggable={false}
             style={{ opacity: 0.1, pointer: "none" }}
           />
         )}
@@ -66,6 +70,7 @@ const Group = (props) => {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Write-icon.svg"
               alt=""
+              draggable={false}
               onClick={() => {
                 if (editName.length) {
                   props.setGroupTitle(editName);
@@ -76,6 +81,7 @@ const Group = (props) => {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_delete_2019_1.svg"
               alt=""
+              draggable={false}
               onClick={() => {
                 props.deleteGroup();
               }}
@@ -83,6 +89,7 @@ const Group = (props) => {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
               alt=""
+              draggable={false}
               onClick={() => setEditName(null)}
             />
           </div>
