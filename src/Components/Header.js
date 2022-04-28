@@ -17,6 +17,10 @@ const Header = (props) => {
           src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg"
           alt=""
           draggable={false}
+          onClick={() => {
+            props.toggleSidebar();
+            setOptionOpen(false);
+          }}
         />
         <h1>Yet Another List App</h1>
       </div>
