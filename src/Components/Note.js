@@ -8,8 +8,14 @@ const Note = (props) => {
     noteType += "-add";
   }
 
+  let noteOpacity = props.done ? 0.3 : 1;
+
   return (
-    <div className={noteType} onClick={props.onClick}>
+    <div
+      className={noteType}
+      onClick={props.onClick}
+      style={{ opacity: noteOpacity }}
+    >
       <h3>{props.title}</h3>
       <p style={{ wordWrap: "break-word" }}>
         {props.content

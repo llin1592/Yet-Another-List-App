@@ -52,7 +52,8 @@ const Header = (props) => {
       </div>
       <animated.div className="options-box" style={appearRight}>
         <p>Hello there!</p>
-        <p>Second row</p>
+        <p>This is where settings would go.</p>
+        <p>Unfortunately, there isn't any right now.</p>
       </animated.div>
     </div>
   );

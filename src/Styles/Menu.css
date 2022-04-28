@@ -6,7 +6,6 @@
 .cover {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
-    width: calc(100% - 300px);
     height: 100vh;
 
     display: flex;

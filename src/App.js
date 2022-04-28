@@ -32,6 +32,7 @@ function App() {
           </div>
         </animated.div>
       </div>
+
       <div className="main-display-container">
         <Header
           searchText={searchText}
