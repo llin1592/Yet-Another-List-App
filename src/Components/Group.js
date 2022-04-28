@@ -122,6 +122,7 @@ const Group = (props) => {
                         <Note
                           title={note.title}
                           content={note.content}
+                          done={note.done}
                           onClick={() => props.openEditMenu(i)}
                           isAddButton={false}
                         />

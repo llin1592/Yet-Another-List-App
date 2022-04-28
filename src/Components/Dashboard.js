@@ -17,6 +17,7 @@ const Dashboard = (props) => {
           {
             title: "Click me!",
             content: "Make more notes and try dragging me up and down, too!",
+            done: false,
             id: uuidv4(),
           },
         ],
@@ -30,7 +31,7 @@ const Dashboard = (props) => {
     let tempGroups = [...groups];
     tempGroups[groupIndex].notes = [
       ...tempGroups[groupIndex].notes,
-      { title: newTitle, content: newContent, id: uuidv4() },
+      { title: newTitle, content: newContent, done: false, id: uuidv4() },
     ];
     setGroups([...tempGroups]);
   }

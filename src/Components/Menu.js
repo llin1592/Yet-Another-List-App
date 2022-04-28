@@ -12,6 +12,7 @@ const Menu = (props) => {
     tempGroups[props.groupIndex].notes[props.noteIndex] = {
       title: newTitle,
       content: newContent,
+      done: note.done,
       id: note.id,
     };
 
@@ -42,8 +43,6 @@ const Menu = (props) => {
     to: { marginTop: "0px", opacity: 1 },
     config: { duration: 300 },
   });
-
-  appear.width = window.innerWidth - (props.isSidebarOpen ? 300 : 0);
 
   return (
     // https://stackoverflow.com/questions/37568550/react-prevent-event-trigger-on-parent-from-child
@@ -78,6 +77,7 @@ const Menu = (props) => {
             setNote({
               title: e.target.value,
               content: note.content,
+              done: note.done,
               id: note.id,
             })
           }
@@ -91,10 +91,22 @@ const Menu = (props) => {
           value={note.content}
           rows={10}
           onChange={(e) =>
-            setNote({ title: note.title, content: e.target.value, id: note.id })
+            setNote({
+              title: note.title,
+              content: e.target.value,
+              done: note.done,
+              id: note.id,
+            })
           }
         />
         <div className="edit-menu-buttons">
+          <h2
+            onClick={() => {
+              setNote({ ...note, done: !note.done });
+            }}
+          >
+            {note.done ? "Mark not done" : "Mark done"}
+          </h2>
           <h2
             onClick={() => {
               updateNote(note.title, note.content);
