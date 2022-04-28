@@ -34,6 +34,12 @@ function App() {
       </div>
 
       <div className="main-display-container">
+        {isSidebarOpen ? (
+          <div
+            className="rightCover"
+            onClick={() => setIsSidebarOpen(false)}
+          ></div>
+        ) : null}
         <Header
           searchText={searchText}
           onChange={(e) => setSearchText(e.target.value)}

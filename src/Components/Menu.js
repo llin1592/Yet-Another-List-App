@@ -44,8 +44,6 @@ const Menu = (props) => {
     config: { duration: 300 },
   });
 
-  appear.width = window.innerWidth - (props.isSidebarOpen ? 300 : 0);
-
   return (
     // https://stackoverflow.com/questions/37568550/react-prevent-event-trigger-on-parent-from-child
     // https://www.golangprograms.com/onmousedown-and-onmouseup-event-handling-in-reactjs.html
