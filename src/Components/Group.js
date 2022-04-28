@@ -19,48 +19,76 @@ const Group = (props) => {
       <div className="group-move-buttons">
         {/* https://commons.wikimedia.org/wiki/File:ArrowLeft.svg
             https://commons.wikimedia.org/wiki/File:ArrowRight.svg */}
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg" />
-      </div>
+        {props.groupIndex !== 0 ? (
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg"
+            onClick={() =>
+              props.swapGroups(props.groupIndex - 1, props.groupIndex)
+            }
+            style={{ cursor: "pointer" }}
+          />
+        ) : (
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg"
+            style={{ opacity: 0.1 }}
+          />
+        )}
 
-      {editName === null ? (
-        <h2
-          onClick={() => setEditName(props.title)}
-          style={{ wordWrap: "break-word" }}
-        >
-          {props.title}
-        </h2>
-      ) : (
-        <div className="edit-group-title">
-          <input
-            value={editName}
-            onChange={(e) => setEditName(e.target.value)}
-            maxlength={50}
-          />
+        {props.groupIndex !== props.lastGroupIndex ? (
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Write-icon.svg"
-            alt=""
-            onClick={() => {
-              if (editName.length) {
-                props.setGroupTitle(editName);
-              }
-              setEditName(null);
-            }}
+            src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg"
+            onClick={() =>
+              props.swapGroups(props.groupIndex, props.groupIndex + 1)
+            }
+            style={{ cursor: "pointer" }}
           />
+        ) : (
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_delete_2019_1.svg"
-            alt=""
-            onClick={() => {
-              props.deleteGroup();
-            }}
+            src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg"
+            style={{ opacity: 0.1, pointer: "none" }}
           />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
-            alt=""
-            onClick={() => setEditName(null)}
-          />
-        </div>
-      )}
+        )}
+      </div>
+      <div className="edit-group-container">
+        {editName === null ? (
+          <h2
+            onClick={() => setEditName(props.title)}
+            style={{ wordWrap: "break-word" }}
+          >
+            {props.title}
+          </h2>
+        ) : (
+          <div className="edit-group-title">
+            <input
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
+              maxlength={50}
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Write-icon.svg"
+              alt=""
+              onClick={() => {
+                if (editName.length) {
+                  props.setGroupTitle(editName);
+                }
+                setEditName(null);
+              }}
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_delete_2019_1.svg"
+              alt=""
+              onClick={() => {
+                props.deleteGroup();
+              }}
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/f/f8/PICOL_Cancel.svg"
+              alt=""
+              onClick={() => setEditName(null)}
+            />
+          </div>
+        )}
+      </div>
 
       {/* https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/ */}
       <div className="group-notes-container">
