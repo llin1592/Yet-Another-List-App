@@ -4,12 +4,7 @@ import Note from "./Note.js";
 import "../Styles/Group.css";
 
 const Group = (props) => {
-  let groupType = "group-container";
   let [editName, setEditName] = useState(null);
-
-  if (props.onClick) {
-    groupType += "-add";
-  }
 
   return (
     <div className="group-container">
@@ -22,6 +17,7 @@ const Group = (props) => {
         {props.groupIndex !== 0 ? (
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg"
+            alt=""
             onClick={() =>
               props.swapGroups(props.groupIndex - 1, props.groupIndex)
             }
@@ -30,6 +26,7 @@ const Group = (props) => {
         ) : (
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/f2/ArrowLeft.svg"
+            alt=""
             style={{ opacity: 0.1 }}
           />
         )}
@@ -37,6 +34,7 @@ const Group = (props) => {
         {props.groupIndex !== props.lastGroupIndex ? (
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg"
+            alt=""
             onClick={() =>
               props.swapGroups(props.groupIndex, props.groupIndex + 1)
             }
@@ -45,6 +43,7 @@ const Group = (props) => {
         ) : (
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/ArrowRight.svg"
+            alt=""
             style={{ opacity: 0.1, pointer: "none" }}
           />
         )}
