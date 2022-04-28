@@ -49,11 +49,31 @@ const Dashboard = (props) => {
 
   function deleteGroupHelper(groupIndex) {
     let tempGroups = [...props.groups];
-    console.log(tempGroups);
-    console.log(groupIndex);
     tempGroups.splice(groupIndex, 1);
 
     props.setGroups([...tempGroups]);
+  }
+
+  function swapGroups(first, second) {
+    console.log(first);
+    let tempGroups = [...props.groups];
+    let temp = tempGroups[first];
+    tempGroups[first] = tempGroups[second];
+    tempGroups[second] = temp;
+
+    props.setGroups([...tempGroups]);
+  }
+
+  let displayGroups = groups;
+
+  if (props.searchText) {
+    displayGroups = groups.filter(
+      (group) =>
+        group.title.toLowerCase().includes(props.searchText) ||
+        group.notes.filter((note) =>
+          note.title.toLowerCase().includes(props.searchText)
+        ).length > 0
+    );
   }
 
   return (
@@ -61,60 +81,38 @@ const Dashboard = (props) => {
       {/* Close but not this 
         https://stackoverflow.com/questions/31284169/parse-error-adjacent-jsx-elements-must-be-wrapped-in-an-enclosing-tag*/}
       {/* https://stackoverflow.com/questions/23840997/how-can-i-return-multiple-lines-jsx-in-another-return-statement-in-react */}
-      {props.searchText
-        ? groups
-            .filter(
-              (group) =>
-                group.title.toLowerCase().includes(props.searchText) ||
-                group.notes.filter((note) =>
-                  note.title.toLowerCase().includes(props.searchText)
-                ).length > 0
-            )
-            .map((group, i) => [
-              <Group
-                title={group.title}
-                notes={group.notes}
-                key={group.id}
-                groupIndex={i}
-                setGroupTitle={(title) => setGroupTitleHelper(title, i)}
-                moveNote={(source, destination) =>
-                  moveNoteHelper(source, destination, i)
-                }
-                openEditMenu={(noteIndex) =>
-                  props.openEditMenu({
-                    groupIndex: i,
-                    noteIndex: noteIndex,
-                  })
-                }
-                deleteGroup={() => deleteGroupHelper(i)}
-              />,
-              <div className="vertical-line"></div>,
-            ])
-        : groups.map((group, i) => [
-            <Group
-              title={group.title}
-              notes={group.notes}
-              key={group.id}
-              groupIndex={i}
-              addNotes={(title, content) => addNotesHelper(title, content, i)}
-              setGroupTitle={(title) => setGroupTitleHelper(title, i)}
-              moveNote={(source, destination) =>
-                moveNoteHelper(source, destination, i)
-              }
-              openEditMenu={(noteIndex) =>
-                props.openEditMenu({
-                  groupIndex: i,
-                  noteIndex: noteIndex,
-                })
-              }
-              deleteGroup={() => deleteGroupHelper(i)}
-            />,
-            <div className="vertical-line"></div>,
-          ])}
+      {displayGroups.map((group, i) => [
+        <Group
+          title={group.title}
+          notes={group.notes}
+          key={group.id}
+          groupIndex={i}
+          addNotes={
+            props.searchText
+              ? null
+              : (title, content) => addNotesHelper(title, content, i)
+          }
+          setGroupTitle={(title) => setGroupTitleHelper(title, i)}
+          swapGroups={(first, second) => swapGroups(first, second)}
+          lastGroupIndex={groups.length - 1}
+          moveNote={(source, destination) =>
+            moveNoteHelper(source, destination, i)
+          }
+          openEditMenu={(noteIndex) =>
+            props.openEditMenu({
+              groupIndex: i,
+              noteIndex: noteIndex,
+            })
+          }
+          deleteGroup={() => deleteGroupHelper(i)}
+        />,
+        <div className="vertical-line"></div>,
+      ])}
 
       {!props.searchText ? (
         <AddGroup
           title="Add a new group"
+          notes={[]}
           onClick={() =>
             setGroups([
               ...groups,
