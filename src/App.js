@@ -38,6 +38,7 @@ function App() {
           onChange={(e) => setSearchText(e.target.value)}
           resetSearch={() => setSearchText("")}
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          isSidebarOpen={isSidebarOpen}
           config={config}
         />
         <Dashboard

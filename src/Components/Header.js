@@ -19,7 +19,9 @@ const Header = (props) => {
           draggable={false}
           onClick={() => {
             props.toggleSidebar();
-            setOptionOpen(false);
+            if (!props.isSidebarOpen) {
+              setOptionOpen(false);
+            }
           }}
         />
         <h1>Yet Another List App</h1>
